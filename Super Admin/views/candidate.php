@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>user List</title>
+	<title>Candidates</title>
 </head>
 <body>
 
-	<h1>Employer List page</h1>
+	<h1>Employee List page</h1>
 
 	<?php
-		$users = getAllUser();
+		$users = getAllEmployee();
 	?>
 
 	<table border=1> 
@@ -33,22 +33,21 @@
 				<td><?= $users[$i]['password'] ?> </td>
 				
 				<td>
-					<a href="edit_employer.php?username=<?=$users[$i]['username']?>"> Edit</a> |
-					<button type="button" onclick="deleteEmployer('<?=$users[$i]['username']?>')">DELETE</button>
+					<a href="edit_candidate.php?username=<?=$users[$i]['username']?>"> Edit</a> 
+					<button type="button" onclick="deleteEmployee('<?=$users[$i]['username']?>')">DELETE</button>
 
 				</td>
 			</tr>
 		<?php } ?>
 	</table>
 
-
 	<script>
-		 function deleteEmployer(currUsername){
+		 function deleteEmployee(currUsername){
 
 			
 			var xhttp = new XMLHttpRequest();
 
-            xhttp.open("POST", "../controller/employerDeleteController.php", true);
+            xhttp.open("POST", "../controller/employeeDeleteController.php", true);
             xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 			xhttp.send("username="+currUsername);
 

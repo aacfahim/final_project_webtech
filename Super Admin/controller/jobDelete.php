@@ -6,16 +6,16 @@
 
 
 
-        $approvalParam = [     
+        $jobID = [     
             'id'	=> $id
         ];
 
-       $status = approve($approvalParam);
+       $status = deleteJob($jobID);
         
         if($status){
 
 
-            echo "Job post Approved";
+            echo "Job Post Deleted";
 
 
         }

@@ -19,7 +19,7 @@
 	<title>Edit Employers</title>
 </head>
 <body>
-	<form action="../services/userService.php" method="post">
+	<form action="../controller/userController.php" method="post">
 		<fieldset>
 			<legend>Edit User</legend>
 			<table>

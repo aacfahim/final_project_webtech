@@ -19,7 +19,7 @@
 	<title>Edit Jobs</title>
 </head>
 <body>
-	<form action="../services/userService.php" method="post">
+	<form action="../controller/userController.php" method="post">
 		<fieldset>
 			<legend>Edit User</legend>
 			<table>
@@ -43,7 +43,7 @@
 					<td></td>
 					<td>
 						<input type="hidden" name="id" value="<?=$user['id']?>">
-                        <input type="submit" name="update" value="update">
+                        <input type="submit" name="update-job" value="update">
                         
 					</td>
 				</tr>

@@ -32,19 +32,19 @@
         <table>
             <tr>
                 <td>Name</td>
-                <td><?=$user['Name']?></td>
+                <td><?=$user['name']?></td>
             </tr>
             <tr>
                 <td>Username</td>
-                <td><?=$user['Username']?></td>
+                <td><?=$user['username']?></td>
             </tr>
             <tr>
                 <td>Email</td>
-                <td><?=$user['Email']?></td>
+                <td><?=$user['email']?></td>
             </tr>
 
             <tr>
-                <td> <a href="edit_profile.php?username=<?=$user['Username']?>">EDIT PROFILE</a> </td>
+                <td> <a href="edit_profile.php?username=<?=$user['username']?>">EDIT PROFILE</a> </td>
                
             </tr>
 

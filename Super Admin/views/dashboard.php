@@ -51,7 +51,7 @@
                         <nav> <a href="dashboard.php">Dashboard</a></nav>
                         <nav> <a href="jobs.php">Job</a></nav>
                         <nav> <a href="employer_list.php">Employers</a></nav>
-                        <nav> <a href="#">Candidate</a></nav>
+                        <nav> <a href="candidate.php">Candidate</a></nav>
                         <nav> <a href="#">Site Content</a></nav>
                         <nav> <a href="#">Stories</a></nav>
                         <nav> <a href="profile.php">Profile</a></nav>
@@ -110,7 +110,7 @@
 
 
 
-        }
+                }
     </script>
 
 </body>

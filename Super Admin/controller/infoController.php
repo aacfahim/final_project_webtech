@@ -10,9 +10,9 @@
 			header('location: ../views/create.php?error=null');
 		}else{
 			$user = [
-				'username'	=>$username,
-				'password'	=>$password,
-				'email'		=>$email
+				'username'	=> $username,
+				'password'	=> $password,
+				'email'		=> $email
 			];
 			$status = create($user);
 			if($status){
@@ -25,28 +25,31 @@
 
 	//edit new user
 	if(isset($_POST['update'])){
-		$username 	= $_POST['Username'];
-		$password 	= $_POST['Password'];
-		$name 	= $_POST['Name'];
-		$email 	= $_POST['Email'];
+		$name 		= 	$_POST['name'];
+		$email 		= 	$_POST['email'];
+		$username 	=	$_POST['username'];
+		$password 	= 	$_POST['password'];
+		
 
 
 		if(empty($username) || empty($password) || empty($name) || empty($email)){
-			header("location: ../views/edit_profile.php?Username='.$username'");
+			header("location: ../views/edit_profile.php?username='.$username'");
 		}else{
 			$user = [
-				'username'	=>$username,
-				'password'	=>$password,
-				'Name'		=>$name,
-				'Email'		=>$email
+				'name'		=> $name,
+				'username'	=> $username,
+				'email'		=> $email,
+				'password'	=> $password
+				
+
 
 			];
 
-			$status = update($user);
+			$status = AdminInfoUpdate($user);
 			if($status){
 				header('location: ../views/profile.php?msg=success');
 			}else{
-				header('location: ../views/edit_profile.php');
+				header('location: ../views/edit_profile.php?msg=error');
 			}
 		}	
 	}
