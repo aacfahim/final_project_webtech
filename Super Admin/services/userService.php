@@ -131,7 +131,7 @@
 
 	function AdminInfoUpdate($user){
 		$con = DBconnect();
-		$sql = "update superadminlogin set name='{$user['name']}', username='{$user['username']}', email='{$user['email']}', password='{$user['password']}' where username={$user['username']}";
+		$sql = "update superadminlogin set name='{$user['name']}', username='{$user['username']}', email='{$user['email']}', password='{$user['password']}' where username='{$user['username']}'";
 
 		if(mysqli_query($con, $sql)){
 			return true;

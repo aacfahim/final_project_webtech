@@ -1,6 +1,14 @@
 <?php
 	require_once('../controller/sessionController.php');
 	require_once('../services/userService.php');
+
+	function validatephp(){
+		if(isset($_GET['msg'])){
+			if($_GET['msg'] == 'success'){
+				echo "Job details updated.";
+			}
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -10,11 +18,12 @@
 </head>
 <body>
 
-	<h1>Employer List page</h1>
+	<h1>Job posts</h1>
 
 	<?php
 		$users = getAllJobs();
 	?>
+	<?=validatephp();?>
 
 	<table border=1> 
 		<tr>

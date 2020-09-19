@@ -24,6 +24,10 @@ if(isset($_POST['submit'])){
             $_SESSION['username'] = $username;
             $_SESSION['name'] = $name;
             $_SESSION['email'] = $email;
+            
+            setcookie('username', $username, time()+3600, '/');
+            setcookie('STATUS', 'OK', time()+3600, '/');
+
 
             header("location: ../views/dashboard.php");
         }else{

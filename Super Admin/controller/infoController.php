@@ -33,7 +33,7 @@
 
 
 		if(empty($username) || empty($password) || empty($name) || empty($email)){
-			header("location: ../views/edit_profile.php?username='.$username'");
+			header('location: ../views/edit_profile.php?username='.$username);
 		}else{
 			$user = [
 				'name'		=> $name,

@@ -1,37 +1,56 @@
 <?php
 	require_once('../services/userService.php');
 
-	//create new user
+	//create new employer
 	if(isset($_POST['create'])){
 		$username 	= $_POST['username'];
 		$password 	= $_POST['password'];
 		$email 		= $_POST['email'];
-		if(empty($username) || empty($password) || empty($email)){
-			header('location: ../views/create.php?error=null');
+		$name 		= $_POST['name'];
+
+		if(empty($username) || empty($password) || empty($email) || empty($name)){
+			header('location: ../views/edit_employer.php?username='.$username);
+		}
+		else if(!preg_match("/^[a-z A-Z]*$/",$name)){
+			header('location: ../views/edit_employer.php?error=name_error');
+
+		}
+		else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			header('location: ../views/edit_employer.php?error=email_error?username='.$username);
+
 		}else{
 			$user = [
+				'name'		=>$name,
 				'username'	=>$username,
-				'password'	=>$password,
-				'email'		=>$email
+				'email'		=>$email,
+				'password'	=>$password	
 			];
 			$status = create($user);
 			if($status){
-				header('location: ../views/user_list.php?msg=success');
+				header('location: ../views/employer_list.php?msg=success');
 			}else{
 				header('location: ../views/create.php?error=dberror');
 			}
 		}	
 	}
 
-	//edit employee
+	//update employee
 	if(isset($_POST['update-employee'])){
 		$username 	= $_POST['username'];
 		$password 	= $_POST['password'];
 		$email 		= $_POST['email'];
 		$name 		= $_POST['name'];
 
-		if(empty($username) || empty($password) || empty($email)){
-			header('location: ../views/edit_employer.php?username='.$username);
+		if(empty($username) || empty($password) || empty($email) || empty($name)){
+			header('location: ../views/edit_employee.php?error=null&username='.$username);
+		}
+		else if(!preg_match("/^[a-z A-Z]*$/",$name)){
+			header('location: ../views/edit_employee.php?error=name_error&username='.$username);
+
+		}
+		else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			header('location: ../views/edit_employee.php?error=email_error&username='.$username);
+
 		}else{
 			$user = [
 				'name'		=>$name,
@@ -41,9 +60,8 @@
 
 			];
 
-			updateEmployer($user);
 
-			$status = updateEmployee($user);
+			$status = updateEmployer($user);
 			if($status){
 				header('location: ../views/candidate.php?msg=success');
 			}else{
@@ -53,17 +71,27 @@
 	}
 
 
-
-
-	//edit employer
+	//update employer
 	if(isset($_POST['update'])){
 		$username 	= $_POST['username'];
 		$password 	= $_POST['password'];
 		$email 		= $_POST['email'];
 		$name 		= $_POST['name'];
 
-		if(empty($username) || empty($password) || empty($email)){
-			header('location: ../views/edit_employer.php?username='.$username);
+		if(empty($username) || empty($password) || empty($email) || empty($name)){
+			header('location: ../views/edit_employer.php?error=null&username='.$username);
+		}
+		else if(!preg_match("/^[a-z A-Z]*$/",$name)){
+			header('location: ../views/edit_employer.php?error=name_error&username='.$username);
+
+		}
+		else if(!preg_match('/^[a-zA-Z0-9]{6,}$/', $username)){
+			header('location: ../views/edit_employer.php?error=username_error&username='.$username);
+
+		}
+		else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			header('location: ../views/edit_employer.php?error=email_error&username='.$username);
+
 		}else{
 			$user = [
 				'name'		=>$name,
@@ -73,18 +101,18 @@
 
 			];
 
-			updateEmployer($user);
+
 
 			$status = updateEmployer($user);
 			if($status){
 				header('location: ../views/employer_list.php?msg=success');
 			}else{
-				header('location: ../views/edit_employer.php?username='.$username);
+				header('location: ../views/edit_employer.php?error=Eerror&username='.$username);
 			}
 		}	
 	}
 
-	//edit Job
+	//update Job
 	if(isset($_POST['update-job'])){
 		$id 	= $_POST['id'];
 		$name 	= $_POST['name'];
@@ -102,13 +130,13 @@
 
 			];
 
-			updateEmployer($user);
 
-			$status = updateEmployer($user);
+
+			$status = updateJob($user);
 			if($status){
 				header('location: ../views/jobs.php?msg=success');
 			}else{
-				header('location: ../views/edit_employer.php?username='.$username);
+				header('location: ../views/edit_job.php?id='.$id);
 			}
 		}	
 	}

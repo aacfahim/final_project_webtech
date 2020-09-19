@@ -50,5 +50,7 @@
 			</table>
 		</fieldset>
 	</form>
+	<br>
+    <p align="center"><a href="Dashboard.php" >Back to Dashboard</a></p>
 </body>
 </html>

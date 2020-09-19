@@ -37,11 +37,9 @@
 </head>
 
 <body>
+    <h1>CONTROL PANEL</h1>
     <h5>Welcome Home <?=$_SESSION['username']?></h5>
 
-    <!-- <a href="create.php"> Create New User</a> |
-	<a href="user_list.php"> User List</a> |
-	<a href="../controller/logoutController.php"> logout</a> -->
 
     <form action="../controller/searchController.php">
         <table>
@@ -62,7 +60,7 @@
                     <div>
                         <td>
                             <input type="text" placeholder="Enter Username" id="username" name="username">
-                            <input type="button" id="submit" name="submit"value="SEARCH" onclick="searchUser()">
+                            <input type="button" id="submit" name="submit" value="SEARCH" onclick="searchUser()">
                         </td>
                         
                     </div>
@@ -76,14 +74,6 @@
             </tr>
 
 
-            <!-- <tr>
-                <td class="search-panel">
-                    <div id="search-result"></div>
-
-                </td>
-            </tr> -->
-
-
         </table>
     </form>
 
@@ -93,12 +83,10 @@
                 var username = document.getElementById("username").value;
                 var xhttp = new XMLHttpRequest();
 
-                xhttp.open("POST", "../controller/searchController.php?username="+username, true);
+                xhttp.open("POST", "../controller/searchController.php", true);
                 xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
                 xhttp.send('username='+username);
-                // xhttp.setRequestHeader()
-                // xhttp.send("name="+name+"&&username="+username);
-                //document.getElementById("result").innerHTML = xhttp.responseText;
+    
 
                 xhttp.onreadystatechange = function(){
 
