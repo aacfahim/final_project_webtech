@@ -1,24 +1,24 @@
 <?php
 	require_once('../services/userService.php');
 
-	//create new user
-	if(isset($_POST['create'])){
-		$username 	= $_POST['username'];
-		$password 	= $_POST['password'];
-		$email 		= $_POST['email'];
-		if(empty($username) || empty($password) || empty($email)){
-			header('location: ../views/create.php?error=null');
+	//create news
+	if(isset($_POST['create-news'])){
+		$date 	= $_POST['date'];
+		$topic 	= $_POST['topic'];
+		$details = $_POST['details'];
+		if(empty($date) || empty($topic) || empty($details)){
+			header('location: ../views/news.php?error=null');
 		}else{
 			$user = [
-				'username'	=> $username,
-				'password'	=> $password,
-				'email'		=> $email
+				'date'	=> $date,
+				'topic'	=> $topic,
+				'details' => $details
 			];
-			$status = create($user);
+			$status = createNews($user);
 			if($status){
-				header('location: ../views/user_list.php?msg=success');
+				header('location: ../views/news.php?msg=success');
 			}else{
-				header('location: ../views/create.php?error=dberror');
+				header('location: ../views/news.php?error=dberror');
 			}
 		}	
 	}

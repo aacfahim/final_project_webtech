@@ -15,9 +15,6 @@
             else if($_GET['error'] == 'Eerror'){
                 echo "Error";
             }
-            else if($_GET['error'] == 'name_error'){
-                echo "Name should not contain Numbers.";
-            }
             else if($_GET['error'] == 'null'){
                 echo "All field are required.";
             }

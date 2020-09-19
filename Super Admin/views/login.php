@@ -43,7 +43,7 @@
             <button type="submit" name="submit">Login</button>
         </form>
 
-        <div class="error-message"><?php validation();?></div>
+        <div align="center" class="error-message"><?php validation();?></div>
 
 
     </div>

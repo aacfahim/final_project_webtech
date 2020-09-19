@@ -40,13 +40,13 @@ function validation(){
 <html>
 
 <head>
-    <title>Signup page</title>
+    <title>Register Company</title>
 </head>
 
 <body>
-    <form action="../controller/signupController.php" method="post">
+    <form name="form" action="../controller/RegController.php" method="post" onsubmit="return validateAdd()">
         <fieldset>
-            <legend>SignUp</legend>
+            <legend>Register a Employer/Company</legend>
             <table>
                 <tr>
                     <td>Name</td>
@@ -70,7 +70,42 @@ function validation(){
                 </tr>
             </table>
         </fieldset>
+
+        <?=validation();?>
     </form>
+
+    <br>
+    <p align="center"><a href="Dashboard.php" >Back to Dashboard</a></p>
 </body>
+
+<script>
+function validateAdd() {
+
+    var name = document.form.name.value;
+    var username = document.form.username.value;
+    var email = document.form.email.value;
+    var password = document.form.password.value;
+
+
+    if (name == null || username == null || email == null || password == null) {
+
+        alert("All fields are required")
+        return false;
+    } 
+    else if (username.match(' ')) {
+        alert("username can't have spaces between");
+        return false;
+    } 
+    else if (!(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email))) {
+        alert("Invalid Email");
+        return false;
+    }
+    else if(password.length < 6){
+        alert("Password must be larger than 6 characters");
+        return false;
+    }
+
+}
+</script>
 
 </html>

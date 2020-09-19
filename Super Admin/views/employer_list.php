@@ -4,8 +4,8 @@
 
 	function validatephp(){
 		if(isset($_GET['msg'])){
-			if($_GET['msg'] == 'success'){
-				echo "Employer details updated.";
+			if($_GET['msg'] == 'company-success'){
+				echo "New Company added.";
 			}
 		}
 

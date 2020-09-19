@@ -66,7 +66,6 @@
 	}
 
 	
-
 	
 	function getAllUser(){
 		$con = DBconnect();
@@ -115,9 +114,10 @@
 		}
 	}
 
-	function create($user){
+
+	function createEmployerByAdmin($user){
 		$con = DBconnect();
-		$sql = "insert into superadminlogin values('{$user['name']}', '{$user['username']}', '{$user['password']}', '{$user['email']}')";
+		$sql = "insert into employer values('{$user['name']}', '{$user['username']}', '{$user['email']}', '{$user['password']}')";
 
 		if(mysqli_query($con, $sql)){
 			return true;
@@ -126,7 +126,18 @@
 		}
 	}
 
-	
+	function createNews($user){
+		$con = DBconnect();
+		$sql = "insert into news values('{$user['date']}','{$user['topic']}', '{$user['details']}')";
+
+		if(mysqli_query($con, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
 
 
 	function AdminInfoUpdate($user){
