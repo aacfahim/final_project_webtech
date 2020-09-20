@@ -53,6 +53,9 @@
                         <nav> <a href="employer_list.php">Employers</a></nav>
                         <nav> <a href="candidate.php">Candidate</a></nav>
                         <nav> <a href="add_company.php">Add Company</a></nav>
+                        <nav> <a href="city.php">Add City</a></nav>
+                        <nav> <a href="city_list.php">Cities</a></nav>
+                        <nav> <a href="feedback.php">Show Feedback</a></nav>
                         <nav> <a href="news.php">News</a></nav>
                         <nav> <a href="profile.php">Profile</a></nav>
                         <nav> <a href="../controller/logoutController.php">Logout</a></nav>

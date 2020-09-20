@@ -105,6 +105,24 @@
 			}
 		}	
 	}
+	//add city
+	if(isset($_POST['create-city'])){
+		$city 	= $_POST['city'];
+
+		if(empty($city)){
+			header('location: ../views/create.php?error=null');
+		}else{
+			$city = [
+				'city'	=>$city
+			];
+			$status = addCity($city);
+			if($status){
+				header('location: ../views/city.php?msg=success');
+			}else{
+				header('location: ../views/city.php?error=dberror');
+			}
+		}	
+	}
 
 
 ?>

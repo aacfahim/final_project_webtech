@@ -3,6 +3,24 @@
 	require_once('../db/db.php');
 	
 	
+	function getAllCity(){
+		$con = DBconnect();
+		$sql = "select * from city";
+		$result = mysqli_query($con, $sql);
+		$cities =[];
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($cities, $row);
+		};
+		return $cities;
+	}
+	
+	function getCity($id){
+		$con = DBconnect();
+		$sql = "select * from city where id ='{$id}'";
+		$result = mysqli_query($con, $sql);
+		$row = mysqli_fetch_assoc($result);
+		return $row;
+	}
 	
 
 	function SearchByUsername($username){
@@ -27,6 +45,17 @@
 		$result = mysqli_query($con, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
+	}
+
+	function getFeedback(){
+		$con = DBconnect();
+		$sql = "select * from feedback";
+		$result = mysqli_query($con, $sql);
+		$feedbacks =[];
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($feedbacks, $row);
+		};
+		return $feedbacks;
 	}
 
 	function deleteJob($id){
@@ -100,6 +129,17 @@
 		return $users;
 	}
 
+	function getApprovedJobs(){
+		$con = DBconnect();
+		$sql = "select * from job where permission = 'OK'";
+		$result = mysqli_query($con, $sql);
+		$users =[];
+		while($row = mysqli_fetch_assoc($result)){
+			array_push($users, $row);
+		};
+		return $users;
+	}
+
 	function validate ($user){
 		$con = DBconnect();
 		$sql = "select * from superadminlogin where username='{$user['username']}' and password='{$user['password']}'";
@@ -137,6 +177,17 @@
 		}
 	}
 
+	function addCity($city){
+		$con = DBconnect();
+		$sql = "insert into city values(NULL, '{$city['city']}')";
+
+		if(mysqli_query($con, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 
 
 
@@ -150,6 +201,18 @@
 			return false;
 		}
 	}
+
+	function CityUpdate($user){
+		$con = DBconnect();
+		$sql = "update city set city='{$user['city']}'";
+
+		if(mysqli_query($con, $sql)){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 
 	function updateEmployee($user){
 		$con = DBconnect();
@@ -184,6 +247,19 @@
 			return false;
 		}
 
+	}
+
+	function deleteCity($id){
+
+		$con = DBconnect();
+		$sql = "delete from city where id='{$id['id']}'";
+
+
+		if(mysqli_query($con, $sql)){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 	function deleteEmployee($user){
@@ -224,5 +300,7 @@
 			return false;
 		}
 	}
+
+
 
 ?>
