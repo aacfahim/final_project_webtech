@@ -1,25 +1,32 @@
 <?php
 	require_once('../services/userService.php');
 
-	if(isset($_POST['submit'])){
+	$json = $_POST['json'];
 
-		$name 		= $_POST['name'];
-		$username 	= $_POST['username'];
-		$password 	= $_POST['password'];
-		$email 		= $_POST['email'];
+	$obj = json_decode($json);
+
+
+		$name 		= $obj->name;
+		$username 	= $obj->username;
+		$password 	= $obj->password;
+		$email 		= $obj->email;
 
 		if(empty($name) || empty($username) || empty($password) || empty($email)){
-			header('location: ../views/add_company.php?error=null');
+			
+			echo "All fields are required";
 		}
 		else if(!preg_match('/^[a-zA-Z0-9]{6,}$/', $username)){
-			header('location: ../views/add_company.php?error=username_error');
+
+			echo "Username must be at least 6 characters";
 
 		}
 		else if(strlen($password) < 6){
-			header('location: ../views/add_company.php?error=password_error');
+		
+			echo "Password must be at least 6 characters long";
 		}
 		else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-			header('location: ../views/add_company.php?error=email_error');
+			
+			echo "Please enter a valid Email";
 
 		} else{
 			
@@ -33,11 +40,12 @@
 			$status = createEmployerByAdmin($user);
 
 			if($status){
-				header('location: ../views/employer_list.php?msg=company-success');
+				
+				echo  $name." Company Added";
 			}else{
-				header('location: ../views/add_company.php?error=dberror');
+				
+				echo "Service error ... Please try again.";
 			}
 		}
-		
-	}
+
 ?>

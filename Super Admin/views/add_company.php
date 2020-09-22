@@ -1,41 +1,9 @@
 <?php
 
-function validation(){
-
-	if(isset($_GET['error'])){
-		if($_GET['error'] == 'dberror'){
-			echo "Service error ... Please try again.";
-		}
-		else if($_GET['error'] == 'name_error'){
-			echo "Name should not contain Numbers.";
-		}
-		else if($_GET['error'] == 'null'){
-			echo "All field are required.";
-		}
-		else if($_GET['error'] == 'null'){
-			echo "All field are required.";
-		}
-		else if($_GET['error'] == 'username_error'){
-			echo "Please make sure You username doesn't contain space and longer than 6 character";
-		}
-		else if($_GET['error'] == 'email_error'){
-			echo "Please enter a valid email address";
-		}
-		else if($_GET['error'] == 'password_error'){
-			echo "Please set a password of 6 or more charcaters long";
-		}
-	}
-
-	if(isset($_GET['msg'])){
-		if($_GET['error'] == 'success'){
-			echo "Registration successfull";
-		}
-	}
-
-}
-	
+   require_once('../controller/sessionController.php');		
 
 ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -65,13 +33,15 @@ function validation(){
                     <td><input type="email" name="email"></td>
                 </tr>
                 <tr>
-                    <td></td>
-                    <td><input type="submit" name="submit" value="Submit"></td>
+                    <td> <input type="button" id="submit" name="submit" value="Confirm" onclick="addCompany()"></td>
+                   
                 </tr>
             </table>
         </fieldset>
 
-        <?=validation();?>
+    
+
+        <div id="message"></div>
     </form>
 
     <br>
@@ -106,6 +76,50 @@ function validateAdd() {
     }
 
 }
+
+function addCompany(){
+    var name = document.form.name.value;
+    var username = document.form.username.value;
+    var email = document.form.email.value;
+    var password = document.form.password.value;
+
+    var xhttp = new XMLHttpRequest();
+
+    var data = {
+        'name' : name,
+        'username' : username,
+        'email' : email,
+        'password' : password
+    };
+
+    data = JSON.stringify(data);
+
+    xhttp.open("POST", "../controller/regController.php", true);
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhttp.send('json=' + data);
+
+    xhttp.onreadystatechange = function() {
+
+    if (this.readyState == 4 && this.status == 200) {
+        //alert(this.responseText);
+        document.getElementById("message").innerHTML = this.responseText;
+
+         document.form.name.value = "";
+         document.form.username.value = "";
+         document.form.email.value = "";
+         document.form.password.value = "";
+    
+    }
+}
+
+
+
+
+}
+
+
+
+
 </script>
 
 </html>
