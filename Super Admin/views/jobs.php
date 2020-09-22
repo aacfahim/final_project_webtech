@@ -28,6 +28,7 @@
 	<table border=1> 
 		<tr>
 			<td>JOB ID</td> 
+			<td>COMPANY</td> 
 			<td>NAME</td>
 			<td>DESCRIPTION</td> 
             <td>SALARY</td>
@@ -37,6 +38,7 @@
 		<?php for($i=0; $i != count($users); $i++ ){ ?>
 			<tr>
                 <td><?= $users[$i]['id'] ?></td>
+				<td><?= $users[$i]['provider'] ?></td>
 				<td><?= $users[$i]['name'] ?></td>
 				<td><?= $users[$i]['description'] ?></td>
 				<td><?= $users[$i]['salary'] ?></td>

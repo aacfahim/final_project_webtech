@@ -34,6 +34,10 @@
                     <td><input type="text" name="id" value="<?=$user['id']?>"></td>
                 </tr>
                 <tr>
+                    <td>COMPANY NAME</td>
+                    <td><input type="text" name="provider" value="<?=$user['provider']?>"></td>
+                </tr>
+                <tr>
                     <td>Description</td>
                     <td><textarea name="description"><?=$user['description']?></textarea></td>
                 </tr>
@@ -62,9 +66,10 @@ function validateEdit() {
     var name = document.form.name.value;
     var desc = document.form.description.value;
     var salary = document.form.salary.value;
+    var provider = document.form.provider.value;
 
 
-    if (id == null || name == null || desc == null || salary == null) {
+    if (id == null || name == null || desc == null || salary == null || provider == null) {
 
         alert("All fields are required");
         return false;

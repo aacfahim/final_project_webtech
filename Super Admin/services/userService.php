@@ -33,7 +33,7 @@
 
 	function SearchByEmployee($username){
 		$con = DBconnect();
-		$sql = "select * from employee where username ='{$username}'";
+		$sql = "select * from jobseeker_reg where username ='{$username}'";
 		$result = mysqli_query($con, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
@@ -88,7 +88,7 @@
 
 	function getEmployeeByUsername($username){
 		$con = DBconnect();
-		$sql = "select * from employee where username ='{$username}'";
+		$sql = "select * from jobseeker_reg where username ='{$username}'";
 		$result = mysqli_query($con, $sql);
 		$row = mysqli_fetch_assoc($result);
 		return $row;
@@ -109,7 +109,7 @@
 
 	function getAllEmployee(){
 		$con = DBconnect();
-		$sql = "select * from employee";
+		$sql = "select * from jobseeker_reg";
 		$result = mysqli_query($con, $sql);
 		$users =[];
 		while($row = mysqli_fetch_assoc($result)){
@@ -216,7 +216,7 @@
 
 	function updateEmployee($user){
 		$con = DBconnect();
-		$sql = "update employee set name='{$user['name']}', username='{$user['username']}', email='{$user['email']}',password='{$user['password']}' where username='{$user['username']}'";
+		$sql = "update jobseeker_reg set name='{$user['name']}', username='{$user['username']}', email='{$user['email']}',password='{$user['password']}' where username='{$user['username']}'";
 
 		if(mysqli_query($con, $sql)){
 			return true;
@@ -239,7 +239,7 @@
 
 	function updateJob($user){
 		$con = DBconnect();
-		$sql = "update job set name='{$user['name']}', id='{$user['id']}', description='{$user['description']}',salary='{$user['salary']}' where id='{$user['id']}'";
+		$sql = "update job set name='{$user['name']}', id='{$user['id']}',provider='{$user['provider']}', description='{$user['description']}',salary='{$user['salary']}' where id='{$user['id']}'";
 
 		if(mysqli_query($con, $sql)){
 			return true;
@@ -265,7 +265,7 @@
 	function deleteEmployee($user){
 
 		$con = DBconnect();
-		$sql = "delete from employee where username='{$user['username']}'";
+		$sql = "delete from jobseeker_reg where username='{$user['username']}'";
 
 
 		if(mysqli_query($con, $sql)){

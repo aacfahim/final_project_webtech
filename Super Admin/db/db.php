@@ -1,8 +1,8 @@
 <?php    
-    $host = "127.0.0.1";
-    $dbuser = "root";
-    $dbpass = "";
-    $dbname = "jobportal";
+    $host = "auth-db180.hostinger.com";
+    $dbuser = "u943645959_Teamjobportal";
+    $dbpass = "Fahim@Mushfiq@Ashfaq123";
+    $dbname = "u943645959_jobportal";
 
     function DBconnect(){
         global $host;
@@ -15,3 +15,6 @@
     }
 
 ?>  
+
+
+

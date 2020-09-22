@@ -80,15 +80,17 @@
 	//update Job
 	if(isset($_POST['update-job'])){
 		$id 	= $_POST['id'];
+		$provider 	= $_POST['provider'];
 		$name 	= $_POST['name'];
 		$description = $_POST['description'];
 		$salary 	= $_POST['salary'];
 
-		if(empty($id) || empty($name) || empty($description) || empty($salary)){
+		if(empty($id) || empty($name) || empty($description) || empty($salary) || empty($provider)){
 			header('location: ../views/edit_job.php?id='.$id);
 		}else{
 			$user = [
-				'name'		=>$name,
+				'name'		=>$name, 
+				'provider'	=>$provider, 
 				'id'		=>$id,
 				'description' =>$description,
 				'salary'	=>$salary	

@@ -41,7 +41,7 @@
         </tr>
         <?php for($i=0; $i != count($users); $i++ ){ ?>
         <tr>
-            <td><?= $users[$i]['name'] ?></td>
+            <td><?= $users[$i]['Name'] ?></td>
             <td><?= $users[$i]['username'] ?></td>
             <td><?= $users[$i]['email'] ?></td>
             <td><?= $users[$i]['password'] ?> </td>
