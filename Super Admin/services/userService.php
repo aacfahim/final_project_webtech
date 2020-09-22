@@ -157,7 +157,8 @@
 
 	function createEmployerByAdmin($user){
 		$con = DBconnect();
-		$sql = "insert into employer values('{$user['name']}', '{$user['username']}', '{$user['email']}', '{$user['password']}')";
+		$sql = "insert into employer values('{$user['name']}', '{$user['username']}', '{$user['email']}', '{$user['password']}', NULL)";
+
 
 		if(mysqli_query($con, $sql)){
 			return true;

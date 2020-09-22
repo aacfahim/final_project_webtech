@@ -31,7 +31,7 @@
 			];
 
 			$status = createEmployerByAdmin($user);
-		
+
 			if($status){
 				header('location: ../views/employer_list.php?msg=company-success');
 			}else{
